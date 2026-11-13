@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Holy-C — Free software and fan games</title>
+  <meta name="description" content="Holy-C is the home of GigaChud's projects: six free desktop and mobile applications and two Dofus Retro fan games, all open on GitHub. No accounts, no telemetry.">
+  <meta name="theme-color" content="#10131d">
+  <meta property="og:title" content="Holy-C — Free software and fan games">
+  <meta property="og:description" content="Six free applications and two Dofus Retro fan games, presented as an explorable map. Everything is on GitHub.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://holy-c.men/">
+  <meta property="og:image" content="https://holy-c.men/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 64 64">
+    <circle cx="32" cy="34" r="22" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <path d="M44.5 25.5A15 15 0 1 0 44.5 42.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <ellipse cx="32" cy="9" rx="11" ry="3.2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <circle cx="32" cy="34" r="30" fill="none" stroke="currentColor" stroke-width=".5" opacity=".45"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 16 16"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 16 16"><path d="M3 3l10 10M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-list" viewBox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 .2a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4A8 8 0 0 0 8 .2z"/></symbol>
+</svg>
+
+<!-- ===== INTRO ===== -->
+<div class="intro" id="intro">
+  <div class="intro__mark">
+    <svg class="intro__logo" aria-hidden="true"><use href="#mark"/></svg>
+    <div class="intro__name"><span>HOLY-C</span><small>PROJECTS</small></div>
+  </div>
+  <div class="intro__actions">
+    <button class="btn btn--outline" id="enterSound" type="button"><span class="btn__text"><span>Enter with sound</span><span>Enter with sound</span></span></button>
+    <button class="textlink textlink--small" id="enterMute" type="button">Enter without sound</button>
+  </div>
+</div>
+
+<!-- ===== WEBGL BACKGROUND ===== -->
+<canvas id="gl" class="gl" aria-hidden="true"></canvas>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#" data-nav="map" aria-label="Holy-C, back to the map">
+    <svg class="nav__logo" aria-hidden="true"><use href="#mark"/></svg>
+    <span class="nav__word">HOLY<em>-C</em></span>
+  </a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#" data-nav="map" class="is-active">Projects</a>
+    <a href="#" data-nav="about">About</a>
+    <a href="#" data-nav="contact">Contact</a>
+  </nav>
+  <button class="nav__sound" id="soundToggle" type="button" aria-pressed="false" aria-label="Toggle sound">
+    <span class="nav__soundlabel">Sound</span>
+    <span class="nav__soundstate"><b>off</b><i>on</i></span>
+    <span class="nav__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  </button>
+  <button class="nav__burger" id="burger" type="button" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<!-- ===== MAP ===== -->
+<main class="stage" id="stage" aria-label="Project map">
+  <div class="world" id="world">
+    <svg class="world__lines" id="lines" aria-hidden="true"></svg>
+    <div class="region region--software" style="--x:1600px;--y:660px"><small>Region 01</small><span>Software</span></div>
+    <div class="region region--games" style="--x:2850px;--y:760px"><small>Region 02</small><span>Games</span></div>
+    <div id="markers"></div>
+  </div>
+
+  <div class="hero" id="hero">
+    <p class="hero__kicker"><span>Holy-C</span><span class="hero__sep"></span><span class="hero__long">Eight projects, open on GitHub</span><span class="hero__short">Eight projects</span></p>
+    <h1 class="hero__title">
+      <span class="line"><span>Never wrote a line of code</span></span>
+      <span class="line"><span>in my life, and never will.</span></span>
+      <span class="line"><span><em>Divine vibetellect.</em></span></span>
+    </h1>
+  </div>
+
+  <button class="explore btn btn--outline" id="exploreBtn" type="button">
+    <svg class="btn__icon" aria-hidden="true"><use href="#i-list"/></svg>
+    <span class="btn__text"><span>Explore the work</span><span>Explore the work</span></span>
+  </button>
+
+  <p class="hint" id="hint"><span class="hint--desktop">Drag or scroll to navigate.<br>Click markers to explore.</span><span class="hint--touch">Drag to navigate.<br>Tap markers to explore.</span></p>
+
+  <div class="compass" id="compass" aria-hidden="true"><i></i></div>
+</main>
+
+<!-- ===== PROJECT PANEL ===== -->
+<aside class="panel" id="panel" aria-hidden="true" role="dialog" aria-labelledby="panelTitle">
+  <div class="panel__scroll">
+    <header class="panel__head">
+      <span class="tag" id="panelTag">Software</span>
+      <button class="iconbtn" id="panelClose" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="panel__ident">
+      <img class="panel__logo" id="panelLogo" alt="" width="56" height="56">
+      <div>
+        <h2 class="panel__title" id="panelTitle"></h2>
+        <p class="panel__meta" id="panelMeta"></p>
+      </div>
+    </div>
+    <p class="panel__tagline" id="panelTagline"></p>
+    <figure class="panel__shot" id="panelShot"></figure>
+    <p class="panel__desc" id="panelDesc"></p>
+    <ul class="facts" id="panelFacts"></ul>
+    <div class="panel__actions" id="panelActions"></div>
+    <footer class="panel__nav">
+      <button class="textlink textlink--small" id="panelPrev" type="button">← Previous</button>
+      <span class="panel__count" id="panelCount"></span>
+      <button class="textlink textlink--small" id="panelNext" type="button">Next →</button>
+    </footer>
+  </div>
+</aside>
+
+<!-- ===== INDEX SHEET ===== -->
+<section class="sheet" id="sheetIndex" aria-hidden="true">
+  <div class="sheet__inner">
+    <header class="sheet__head">
+      <p class="sheet__kicker">Index — <span id="indexCount"></span> projects</p>
+      <button class="iconbtn" data-close type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="index" id="indexList"></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT SHEET ===== -->
+<section class="sheet" id="sheetAbout" aria-hidden="true">
+  <div class="sheet__inner sheet__inner--narrow">
+    <header class="sheet__head">
+      <p class="sheet__kicker">About</p>
+      <button class="iconbtn" data-close type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="about">
+      <img class="about__avatar" src="assets/projects/avatar.jpg" alt="GigaChud's avatar" width="96" height="96">
+      <h2 class="about__title">Holy-C is where GigaChud's projects live.</h2>
+      <p>Six applications for Windows, Linux and Android, and two fan games set in the world of Dofus Retro. Every one of them is free, works without an account, sends no telemetry, and is published on GitHub with its releases.</p>
+      <p>The common thread: tools that do one thing properly, explain what they are about to do, and never touch your files behind your back. The games are made for people who miss the old World of Twelve.</p>
+      <blockquote>“Never wrote a line of code in my life and never will. Divine vibetellect.”<cite>— GigaChud, GitHub bio</cite></blockquote>
+      <dl class="about__facts">
+        <div><dt>Software</dt><dd>Rust, Tauri, Electron, Kotlin</dd></div>
+        <div><dt>Games</dt><dd>Godot 4, JavaScript + PixiJS</dd></div>
+        <div><dt>Licences</dt><dd>MIT, GPL-3.0</dd></div>
+        <div><dt>Languages</dt><dd>English, French and up to ten more</dd></div>
+      </dl>
+      <p class="about__legal">Retro Defenders and Retro Survivors are non-commercial fan projects, not affiliated with or endorsed by Ankama. Dofus and Dofus Retro are trademarks of Ankama.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SHEET ===== -->
+<section class="sheet" id="sheetContact" aria-hidden="true">
+  <div class="sheet__inner sheet__inner--narrow">
+    <header class="sheet__head">
+      <p class="sheet__kicker">Contact</p>
+      <button class="iconbtn" data-close type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="contact">
+      <h2 class="about__title">Found a bug, have an idea, want to translate?</h2>
+      <p>The quickest way is an issue on the project's repository. For the games, the Discord is where players and testers hang out.</p>
+      <ul class="contact__links">
+        <li><a class="biglink" href="https://github.com/BigFatDeuce" target="_blank" rel="noopener"><span>GitHub</span><small>github.com/BigFatDeuce</small><svg aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><a class="biglink" href="https://discord.gg/N8f62M2eaK" target="_blank" rel="noopener"><span>Discord</span><small>Retro games community</small><svg aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><a class="biglink" href="https://retro-defenders.holy-c.men/" target="_blank" rel="noopener"><span>Play Retro Defenders</span><small>retro-defenders.holy-c.men</small><svg aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><a class="biglink" href="https://retro-survivors.pages.dev" target="_blank" rel="noopener"><span>Play Retro Survivors</span><small>retro-survivors.pages.dev</small><svg aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MOBILE MENU ===== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <a href="#" data-nav="map">Projects</a>
+  <a href="#" data-nav="about">About</a>
+  <a href="#" data-nav="contact">Contact</a>
+  <a href="https://github.com/BigFatDeuce" target="_blank" rel="noopener">GitHub ↗</a>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<script src="js/projects.js"></script>
+<script src="js/world.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://holy-c.men/sitemap.xml
