@@ -114,7 +114,7 @@
 
   /* ----------------------------------------------------------------- layout */
   // Grid spacing inside a region, room for the names, gap between regions, outer margins.
-  const L = { col: 460, row: 330, label: 340, gap: 820, padX: 920, top: 640, bottom: 640 };
+  const L = { col: 400, row: 300, label: 290, gap: 560, padX: 860, top: 600, bottom: 600 };
 
   function layout(data) {
     const regions = (data.regions || []).map((r) => Object.assign({}, r, { items: [] }));
@@ -131,7 +131,7 @@
     // phones: one zigzag column per region; larger screens: a staggered grid
     const mobile = narrow();
     const row = mobile ? 290 : L.row;
-    const stagger = mobile ? 170 : L.col / 2;
+    const stagger = mobile ? 100 : L.col / 2;
     let cursor = L.padX, maxH = 0;
     used.forEach((r) => {
       const n = r.items.length;
@@ -258,9 +258,10 @@
   // drag
   let px = 0, py = 0, lastX = 0, lastY = 0, lastT = 0;
   stage.addEventListener('pointerdown', (e) => {
+    dragMoved = false; // a previous drag must never swallow this click (Explore button, beacons)
     if (e.button !== 0 && e.pointerType === 'mouse') return;
     if (e.target.closest('.explore, .beacon')) return;
-    dragging = true; dragMoved = false;
+    dragging = true;
     px = lastX = e.clientX; py = lastY = e.clientY; lastT = performance.now();
     cam.vx = cam.vy = 0;
     stage.classList.add('is-dragging');
@@ -283,7 +284,10 @@
   window.addEventListener('pointerup', endDrag);
   window.addEventListener('pointercancel', endDrag);
   window.addEventListener('blur', endDrag);
-  stage.addEventListener('click', (e) => { if (dragMoved) { e.stopPropagation(); e.preventDefault(); } }, true);
+  stage.addEventListener('click', (e) => {
+    if (!dragMoved || e.target.closest('.explore, .beacon')) return;
+    e.stopPropagation(); e.preventDefault();
+  }, true);
 
   stage.addEventListener('wheel', (e) => {
     e.preventDefault();

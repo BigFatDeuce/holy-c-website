@@ -10,7 +10,7 @@
   --line: rgba(233, 236, 238, 0.14);
   --line-strong: rgba(233, 236, 238, 0.34);
   --accent: #9fc3e6;
-  --display: "Syne", "Segoe UI", system-ui, sans-serif;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --expo: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(16px, 3.2vw, 44px);
@@ -20,6 +20,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
+html { font-stretch: 84%; }
 body {
   margin: 0;
   background: var(--bg);
@@ -81,13 +82,24 @@ svg { display: block; }
 }
 .intro.is-leaving { opacity: 0; visibility: hidden; }
 .intro__mark { position: relative; display: grid; place-items: center; }
+/* portrait sits inside the logo's main circle (r=22 of the 64-unit viewBox, centred at 32,34) */
+.intro__portrait {
+  position: absolute; left: 15.625%; top: 18.75%; width: 68.75%; height: 68.75%;
+  border-radius: 50%; object-fit: cover; pointer-events: none;
+  opacity: 0.85; animation: portrait-in 2.4s ease 0.3s backwards;
+}
+@keyframes portrait-in { from { opacity: 0; } }
 .intro__logo {
   width: clamp(220px, 34vmin, 360px); height: auto; aspect-ratio: 1;
   color: var(--ink); opacity: 0.22;
   animation: breathe 6s ease-in-out infinite;
 }
 @keyframes breathe { 0%, 100% { opacity: 0.16; transform: scale(0.98); } 50% { opacity: 0.3; transform: scale(1); } }
-.intro__name { position: absolute; display: grid; place-items: center; gap: 4px; font-size: 13px; letter-spacing: 0.34em; }
+.intro__name {
+  position: absolute; display: grid; place-items: center; gap: 4px; font-size: 13px; letter-spacing: 0.34em;
+  padding: 10px 16px 9px; border-radius: 4px;
+  background: rgba(11, 13, 21, 0.72); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+}
 .intro__name small { font-size: 9px; letter-spacing: 0.3em; color: var(--muted); }
 .intro__actions {
   position: absolute; left: 0; right: 0; bottom: clamp(32px, 7vh, 72px);
