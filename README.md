@@ -68,6 +68,13 @@ automatically between consecutive zones. Zones without projects are hidden.
 `site.about` is the first paragraph of the About page; `{software}` and `{games}` (any zone id)
 are replaced by the number of projects in that zone, written in words.
 
+## Caching
+
+The domain's Cloudflare cache keeps CSS, JS and images for hours. After changing `css/style.css`,
+`js/main.js` or `js/world.js`, bump the `?v=` number on their links in `index.html` (same number for all three).
+Replacing an image under the same name has the same problem: give the new file a new name instead.
+`index.html` and `data/projects.json` are not cached, so content updates show up right away.
+
 ## Files
 
 - `index.html`, `css/style.css` — page and styles (display font: Syne, text: Inter)
