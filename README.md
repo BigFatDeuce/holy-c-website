@@ -77,7 +77,7 @@ Replacing an image under the same name has the same problem: give the new file a
 
 ## Files
 
-- `index.html`, `css/style.css` — page and styles (display font: Bricolage Grotesque, narrowed with font-stretch; text: Inter)
+- `index.html`, `css/style.css` — page and styles (display font: Bricolage Grotesque, narrowed with font-stretch; zone titles: Instrument Serif italic; text: Inter)
 - `js/main.js` — layout, camera, markers, zones, panels
 - `js/world.js` — WebGL background
 - `_headers` — Cloudflare Pages cache headers

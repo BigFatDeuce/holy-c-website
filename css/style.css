@@ -11,6 +11,7 @@
   --line-strong: rgba(233, 236, 238, 0.34);
   --accent: #9fc3e6;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --zone: "Instrument Serif", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --expo: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(16px, 3.2vw, 44px);
@@ -270,12 +271,13 @@ body.is-entered .region { opacity: 1; }
 body.hero-over .region { opacity: 0; transition-delay: 0s; }
 .region small { color: var(--accent); }
 .region span {
-  font-family: var(--display); font-weight: 800; font-size: 118px; line-height: 0.86; letter-spacing: -0.03em;
-  color: color-mix(in srgb, var(--accent) 7%, transparent);
-  -webkit-text-stroke: 1.2px color-mix(in srgb, var(--accent) 55%, transparent);
-  transition: color 0.6s ease, -webkit-text-stroke-color 0.6s ease;
+  font-family: var(--zone); font-style: italic; font-weight: 400; font-stretch: normal;
+  font-size: 150px; line-height: 0.8; letter-spacing: -0.02em; padding-right: 0.08em;
+  color: color-mix(in srgb, var(--accent) 62%, transparent);
+  text-shadow: 0 0 60px color-mix(in srgb, var(--accent) 22%, transparent);
+  transition: color 0.6s ease;
 }
-.region:hover span { color: color-mix(in srgb, var(--accent) 20%, transparent); -webkit-text-stroke-color: var(--accent); }
+.region:hover span { color: var(--accent); }
 
 /* markers: just a dot and the project name */
 .marker {
