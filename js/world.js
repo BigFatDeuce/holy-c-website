@@ -43,8 +43,7 @@ void main(){
   vec3 deep  = vec3(0.055, 0.070, 0.105);
   vec3 blue  = vec3(0.110, 0.230, 0.380);
   vec3 ember = vec3(0.330, 0.190, 0.095);
-  float regional = smoothstep(2050.0, 2500.0, world.x);
-  float warm = clamp(max(regional, u_warm), 0.0, 1.0);
+  float warm = clamp(u_warm, 0.0, 1.0);
   vec3 tint = mix(blue, ember, warm);
 
   float glow = exp(-dot(p, p) * 2.6);
