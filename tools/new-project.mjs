@@ -7,6 +7,7 @@
 // It creates the entry (description, platforms guessed from topics, language, licence, latest release)
 // and the folder assets/projects/<id>/ for the logo and screenshots. Texts are only a starting point:
 // rewrite tagline, description and facts by hand, then add the images (see README.md).
+import { formatJson } from './json-format.mjs';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 
@@ -68,7 +69,7 @@ const project = {
 };
 
 data.projects.push(project);
-await writeFile(FILE, JSON.stringify(data, null, 2) + '\n');
+await writeFile(FILE, formatJson(data));
 await mkdir(new URL(`../assets/projects/${id}/`, import.meta.url), { recursive: true });
 
 console.log(`Added "${name}" (${id}) to region "${region}".`);

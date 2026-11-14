@@ -7,6 +7,7 @@
 //
 // Uses GITHUB_TOKEN if set, otherwise `gh auth token` when the GitHub CLI is logged in,
 // otherwise anonymous requests (60 per hour, enough for a few dozen projects).
+import { formatJson } from './json-format.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 
@@ -44,7 +45,7 @@ for (const p of data.projects) {
 }
 
 if (changes && !dry) {
-  await writeFile(FILE, JSON.stringify(data, null, 2) + '\n');
+  await writeFile(FILE, formatJson(data));
   console.log(`\n${changes} project(s) updated in data/projects.json`);
 } else {
   console.log(changes ? `\n${changes} change(s) found (dry run, nothing written)` : '\nEverything is up to date');
