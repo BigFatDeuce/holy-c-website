@@ -8,5 +8,5 @@ of github.com/BigFatDeuce/holy-c-website. No build step.
 - Adding a project: `node tools/new-project.mjs Owner/Repo --region <zone>`, rewrite the texts from the repo README,
   download logo + screenshots from the repo into `assets/projects/<id>/`, run `python -I tools/optimize_images.py assets/projects/<id>`.
 - Check locally with the `site` preview (`.claude/launch.json`, port 8765) on desktop 1440x900 and mobile before pushing.
-- Site texts are in English. Display font Bricolage Grotesque at 84% width (font-stretch on html), zone titles Instrument Serif italic, body text Inter. The intro portrait is assets/intro/portrait.webp, a circle-masked transparent image.
+- Site texts are in English. Display font Bricolage Grotesque at 84% width (font-stretch on html), zone titles Chakra Petch (glitch bursts from glitchLoop in main.js), body text Inter. The intro portrait is assets/intro/portrait.webp, a circle-masked transparent image.
 - After editing css/js, bump the `?v=` on their links in index.html: the holy-c.men zone cache otherwise serves stale files.

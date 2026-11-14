@@ -116,6 +116,25 @@
   // Grid spacing inside a region, room for the names, gap between regions, outer margins.
   const L = { col: 400, row: 300, label: 290, gap: 560, padX: 860, top: 600, bottom: 600 };
 
+  // zone titles: short broadcast-glitch bursts at random intervals (CSS does the tearing)
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function glitch(el) {
+    if (calm.matches || el.classList.contains('is-glitch')) return;
+    el.classList.add('is-glitch');
+    setTimeout(() => el.classList.remove('is-glitch'), 480);
+  }
+  function glitchLoop(el) {
+    const next = () => setTimeout(() => {
+      if (!el.isConnected) return;
+      if (!document.hidden) {
+        glitch(el);
+        if (Math.random() < 0.25) setTimeout(() => glitch(el), 620); // sometimes a double hit
+      }
+      next();
+    }, 4000 + Math.random() * 6000);
+    next();
+  }
+
   function layout(data) {
     const regions = (data.regions || []).map((r) => Object.assign({}, r, { items: [] }));
     const byId = {};
@@ -351,7 +370,9 @@
       label.type = 'button';
       label.className = 'region';
       label.style.cssText = `left:${r.x0 - 30}px;top:${r.cy - r.h / 2 - 70}px;--accent:${r.color}`;
-      label.innerHTML = `<small>Zone ${pad2(i + 1)} · ${word(r.items.length)} ${r.items.length > 1 ? 'projects' : 'project'}</small><span>${esc(r.title)}</span>`;
+      label.innerHTML = `<small>Zone ${pad2(i + 1)} · ${word(r.items.length)} ${r.items.length > 1 ? 'projects' : 'project'}</small><span data-text="${esc(r.title)}">${esc(r.title)}<i></i></span>`;
+      glitchLoop(label);
+      label.addEventListener('mouseenter', () => glitch(label));
       label.addEventListener('click', () => flyToRegion(r));
       label.addEventListener('pointerdown', (e) => e.preventDefault());
       regionsEl.appendChild(label);

@@ -11,7 +11,7 @@
   --line-strong: rgba(233, 236, 238, 0.34);
   --accent: #9fc3e6;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --zone: "Instrument Serif", Georgia, serif;
+  --zone: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --expo: cubic-bezier(0.16, 1, 0.3, 1);
   --gutter: clamp(16px, 3.2vw, 44px);
@@ -271,13 +271,72 @@ body.is-entered .region { opacity: 1; }
 body.hero-over .region { opacity: 0; transition-delay: 0s; }
 .region small { color: var(--accent); }
 .region span {
-  font-family: var(--zone); font-style: italic; font-weight: 400; font-stretch: normal;
-  font-size: 150px; line-height: 0.8; letter-spacing: -0.02em; padding-right: 0.08em;
-  color: color-mix(in srgb, var(--accent) 62%, transparent);
-  text-shadow: 0 0 60px color-mix(in srgb, var(--accent) 22%, transparent);
+  position: relative; display: inline-block;
+  font-family: var(--zone); font-weight: 700; font-stretch: normal; text-transform: uppercase;
+  font-size: 84px; line-height: 0.9; letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--accent) 70%, transparent);
+  text-shadow: 0 0 40px color-mix(in srgb, var(--accent) 25%, transparent);
   transition: color 0.6s ease;
 }
 .region:hover span { color: var(--accent); }
+
+/* broadcast glitch: torn slices, RGB split, corrupted blocks (bursts triggered from main.js) */
+.region span::before, .region span::after {
+  content: attr(data-text); position: absolute; inset: 0; pointer-events: none;
+  opacity: 0; text-shadow: none; mix-blend-mode: screen;
+}
+.region span::before { color: #ff2f6d; }
+.region span::after  { color: #2fe6ff; }
+.region span i {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background:
+    linear-gradient(var(--accent), var(--accent)) 12% 30% / 18% 9% no-repeat,
+    linear-gradient(#fff, #fff) 64% 72% / 9% 6% no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 82% 18% / 12% 5% no-repeat,
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 3px);
+  mix-blend-mode: screen;
+}
+.region.is-glitch span { animation: glitch-main 0.46s steps(1, end) both; }
+.region.is-glitch span::before { animation: glitch-r 0.46s steps(1, end) both; }
+.region.is-glitch span::after  { animation: glitch-c 0.46s steps(1, end) both; }
+.region.is-glitch span i { animation: glitch-blocks 0.46s steps(1, end) both; }
+@keyframes glitch-main {
+  0%   { transform: translate(0); clip-path: inset(0 0 0 0); }
+  10%  { transform: translate(-6px, 0) skewX(-8deg); clip-path: inset(8% 0 52% 0); }
+  20%  { transform: translate(9px, 0); clip-path: inset(46% 0 12% 0); }
+  32%  { transform: translate(-3px, 1px); clip-path: inset(0 0 0 0); }
+  44%  { transform: translate(14px, 0) skewX(6deg); clip-path: inset(62% 0 4% 0); }
+  56%  { transform: translate(-10px, 0); clip-path: inset(22% 0 40% 0); }
+  70%  { transform: translate(2px, 0); clip-path: inset(0 0 0 0); }
+  84%  { transform: translate(-4px, 0); clip-path: inset(70% 0 0 0); }
+  100% { transform: translate(0); clip-path: inset(0 0 0 0); }
+}
+@keyframes glitch-r {
+  0%   { opacity: 0.9; transform: translate(-5px, 0); clip-path: inset(0 0 66% 0); }
+  16%  { transform: translate(12px, 0); clip-path: inset(30% 0 38% 0); }
+  34%  { transform: translate(-16px, 0); clip-path: inset(70% 0 6% 0); }
+  52%  { transform: translate(6px, -1px); clip-path: inset(12% 0 70% 0); }
+  70%  { transform: translate(-8px, 0); clip-path: inset(48% 0 24% 0); }
+  88%  { transform: translate(3px, 0); clip-path: inset(0 0 0 0); }
+  100% { opacity: 0; transform: translate(0); }
+}
+@keyframes glitch-c {
+  0%   { opacity: 0.9; transform: translate(6px, 0); clip-path: inset(56% 0 10% 0); }
+  18%  { transform: translate(-14px, 0); clip-path: inset(4% 0 72% 0); }
+  36%  { transform: translate(10px, 1px); clip-path: inset(38% 0 34% 0); }
+  54%  { transform: translate(-6px, 0); clip-path: inset(76% 0 2% 0); }
+  72%  { transform: translate(9px, 0); clip-path: inset(18% 0 56% 0); }
+  90%  { transform: translate(-2px, 0); clip-path: inset(0 0 0 0); }
+  100% { opacity: 0; transform: translate(0); }
+}
+@keyframes glitch-blocks {
+  0%   { opacity: 0; }
+  12%  { opacity: 0.55; transform: translate(10px, 0); }
+  30%  { opacity: 0; }
+  48%  { opacity: 0.4; transform: translate(-18px, 4px) scaleX(1.4); }
+  64%  { opacity: 0; }
+  100% { opacity: 0; }
+}
 
 /* markers: just a dot and the project name */
 .marker {
