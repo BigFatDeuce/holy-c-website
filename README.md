@@ -16,7 +16,7 @@ node tools/sync-releases.mjs
 It reads the newest GitHub release of each project's `repo` and updates `version`, `prerelease`
 and `released`. Add `--dry-run` to only see what would change. Then commit and push.
 
-This also runs by itself every 6 hours (`.github/workflows/sync-releases.yml`): new versions are committed
+This also runs by itself every hour (`.github/workflows/sync-releases.yml`): new versions are committed
 and pushed automatically, and public repos missing from the site are listed in an open issue
 ("New public repos not on the site"). Run it on demand from the Actions tab, or with
 `gh workflow run sync-releases.yml`.
