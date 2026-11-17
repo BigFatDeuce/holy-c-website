@@ -181,7 +181,7 @@
       "logoWide": true,
       "shots": ["assets/projects/retro-chess/shot.webp"],
       "links": { "play": "https://retro-chess.holy-c.men/" },
-      "version": "0.2.0",
+      "version": "0.3.1",
       "prerelease": false,
       "released": "2026-11-17"
     }
