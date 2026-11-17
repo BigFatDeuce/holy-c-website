@@ -1,0 +1,68 @@
+# Every 6 hours: pull the latest release of each project into data/projects.json and push it,
+# which makes Cloudflare Pages redeploy the site. Also flags new public repos that are not on the site yet
+# in a single GitHub issue, since adding a project needs hand-written texts and images.
+name: Sync releases
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: sync-releases
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OWNER: BigFatDeuce
+      # Public repos that are deliberately not shown on the site.
+      IGNORE_REPOS: holy-c-website
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Update versions
+        run: node tools/sync-releases.mjs
+
+      - name: Commit and push
+        run: |
+          if git diff --quiet data/projects.json; then
+            echo "No new releases."
+            exit 0
+          fi
+          changed=$(git diff -U0 data/projects.json | grep -c '^+ *"version"' || true)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898231+github-actions[bot]@users.noreply.github.com"
+          git add data/projects.json
+          git commit -m "Update versions ($changed project(s))"
+          git push
+
+      - name: Flag public repos missing from the site
+        run: |
+          listed=$(node -e "const d=require('./data/projects.json');console.log(d.projects.map(p=>(p.repo||'').split('/')[1]).filter(Boolean).join('\n'))")
+          missing=$(gh repo list "$OWNER" --visibility public --source --limit 200 --json name --jq '.[].name' \
+            | grep -vxF -f <(printf '%s\n' $listed $(echo "$IGNORE_REPOS" | tr ',' ' ')) || true)
+          title="New public repos not on the site"
+          issue=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')
+          if [ -z "$missing" ]; then
+            [ -n "$issue" ] && gh issue close "$issue" --comment "All public repos are on the site now."
+            exit 0
+          fi
+          body=$(printf 'These public repos are not in `data/projects.json` yet:\n\n'; for r in $missing; do printf -- '- [ ] https://github.com/%s/%s\n' "$OWNER" "$r"; done; printf '\nAdd them with `node tools/new-project.mjs %s/<repo> --region <zone>`, or list them in `IGNORE_REPOS` in this workflow.\n' "$OWNER")
+          if [ -n "$issue" ]; then
+            gh issue edit "$issue" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi

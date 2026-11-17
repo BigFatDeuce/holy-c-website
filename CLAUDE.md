@@ -4,7 +4,9 @@ Static showcase for holy-c.men, deployed by Cloudflare Pages (project `holy-c-we
 of github.com/BigFatDeuce/holy-c-website. No build step.
 
 - All content lives in `data/projects.json`; README.md documents every field and the workflows.
-- Updating versions: `node tools/sync-releases.mjs`, then commit and push.
+- Updating versions: `node tools/sync-releases.mjs`, then commit and push. A GitHub Action does this every 6 hours
+  and pushes as github-actions[bot], so always `git pull` before working. It also keeps an issue
+  "New public repos not on the site" open while a public repo is missing: check it with `gh issue list`.
 - Adding a project: `node tools/new-project.mjs Owner/Repo --region <zone>`, rewrite the texts from the repo README,
   download logo + screenshots from the repo into `assets/projects/<id>/`, run `python -I tools/optimize_images.py assets/projects/<id>`.
 - Check locally with the `site` preview (`.claude/launch.json`, port 8765) on desktop 1440x900 and mobile before pushing.
