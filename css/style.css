@@ -108,6 +108,7 @@ svg { display: block; }
   padding: 0 var(--gutter);
 }
 .intro__actions .textlink--small { position: absolute; right: var(--gutter); bottom: 12px; }
+.intro__actions .intro__links { right: auto; left: var(--gutter); text-decoration: none; }
 @media (max-width: 640px) { .intro__actions .textlink--small { position: static; } }
 
 /* ---------- Buttons ---------- */

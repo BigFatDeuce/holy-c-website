@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Just the links — Holy-C</title>
+  <meta name="description" content="Every Holy-C project on one plain page: free apps and Dofus Retro fan games, with download, play and GitHub links.">
+  <meta name="theme-color" content="#10131d">
+  <meta property="og:title" content="Just the links — Holy-C">
+  <meta property="og:description" content="Every Holy-C project on one plain page, with download, play and GitHub links.">
+  <meta property="og:url" content="https://holy-c.men/links/">
+  <meta property="og:image" content="https://holy-c.men/assets/og.png">
+  <link rel="canonical" href="https://holy-c.men/links/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #10131d;
+      --card: #171b27;
+      --ink: #eef1f3;
+      --ink-dim: #c3cdd6;
+      --muted: #8a9cad;
+      --line: rgba(238, 241, 243, 0.12);
+      --accent: #9fc3e6;
+      --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { font-stretch: 84%; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.55 var(--sans); font-stretch: 100%; }
+    a { color: inherit; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px 64px; }
+
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 15px/1 var(--display); letter-spacing: 0.14em; }
+    .brand svg { width: 30px; height: 30px; color: var(--ink); }
+    .brand em { font-style: normal; color: var(--accent); }
+    .back { color: var(--muted); font-size: 15px; text-decoration: none; white-space: nowrap; }
+    .back:hover { color: var(--ink); text-decoration: underline; }
+
+    h1 { font: 800 clamp(36px, 7vw, 56px)/1.02 var(--display); letter-spacing: -0.02em; margin: 40px 0 10px; }
+    .lead { color: var(--ink-dim); margin: 0 0 8px; max-width: 60ch; }
+
+    h2 { display: flex; align-items: baseline; gap: 12px; font: 700 26px/1.1 var(--display); margin: 48px 0 16px; color: var(--zone, var(--accent)); }
+    h2 small { font: 500 14px/1 var(--sans); color: var(--muted); }
+
+    .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+    .item { display: grid; grid-template-columns: 128px 1fr; gap: 18px; padding: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+    .logo { width: 76px; height: 76px; border-radius: 14px; background: rgba(255, 255, 255, 0.04); display: grid; place-items: center; overflow: hidden; }
+    .logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+    .logo.wide { width: 128px; }
+    .logo.wide img { padding: 4px; }
+    .name { font: 700 22px/1.15 var(--display); margin: 2px 0 4px; }
+    .meta { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+    .desc { color: var(--ink-dim); margin: 0 0 14px; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .links a { display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; font: 600 15px/1 var(--sans); text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+    .links a:hover, .links a:focus-visible { border-color: var(--zone, var(--accent)); background: rgba(255, 255, 255, 0.05); }
+    .links a.main { background: var(--zone, var(--accent)); border-color: transparent; color: #0b0d15; }
+    .links a.main:hover { filter: brightness(1.08); background: var(--zone, var(--accent)); }
+
+    .foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .foot p { margin: 0 0 8px; }
+    .msg { color: var(--ink-dim); margin-top: 32px; }
+
+    @media (max-width: 520px) {
+      body { font-size: 16px; }
+      .item { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
+      .logo { width: 64px; height: 64px; border-radius: 12px; }
+      .logo.wide { width: 112px; }
+      .name { font-size: 20px; }
+      .links a { flex: 1 1 auto; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mark" viewBox="0 0 64 64">
+      <circle cx="32" cy="34" r="22" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M44.5 25.5A15 15 0 1 0 44.5 42.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="32" cy="9" rx="11" ry="3.2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="32" cy="34" r="30" fill="none" stroke="currentColor" stroke-width=".5" opacity=".45"/>
+    </symbol>
+  </svg>
+
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="/" aria-label="Holy-C home"><svg aria-hidden="true"><use href="#mark"/></svg><span>HOLY<em>-C</em></span></a>
+      <a class="back" href="/">← Back to the map</a>
+    </header>
+
+    <main>
+      <h1>Just the links, bro.</h1>
+      <p class="lead">Every project on one page. All free, no account needed, everything on GitHub.</p>
+      <div id="list"><p class="msg">Loading…</p></div>
+      <noscript><p class="msg">This list needs JavaScript. Everything is also on <a href="https://github.com/BigFatDeuce">github.com/BigFatDeuce</a>.</p></noscript>
+    </main>
+
+    <footer class="foot">
+      <p>Questions or bugs: open an issue on the project's GitHub page, or join the <a href="https://discord.gg/N8f62M2eaK">Discord</a>.</p>
+      <p id="legal"></p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      };
+      // Paths in projects.json are relative to the site root.
+      var url = function (p) { return /^(https?:)?\//.test(p) ? p : '/' + p; };
+
+      // Same rules as linksOf() in js/main.js.
+      function linksOf(p) {
+        var L = p.links || {}, out = [];
+        if (L.play) out.push(['Play in browser', L.play]);
+        if (L.download !== false && (L.download || p.repo)) out.push(['Download', L.download || 'https://github.com/' + p.repo + '/releases' + (p.prerelease ? '' : '/latest')]);
+        if (L.website) out.push(['Website', L.website]);
+        if (L.github !== false && (L.github || p.repo)) out.push(['GitHub', L.github || 'https://github.com/' + p.repo]);
+        if (L.discord) out.push(['Discord', L.discord]);
+        return out;
+      }
+
+      function card(p) {
+        var meta = (p.version ? 'v' + p.version + (p.prerelease ? ' preview' : '') + ' · ' : '') + (p.platforms || []).join(' · ');
+        var links = linksOf(p).map(function (l, i) {
+          return '<a' + (i === 0 ? ' class="main"' : '') + ' href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + '</a>';
+        }).join('');
+        return '<li class="item">' +
+          '<div class="logo' + (p.logoWide ? ' wide' : '') + '">' + (p.logo ? '<img src="' + esc(url(p.logo)) + '" alt="" width="76" height="76" decoding="async">' : '') + '</div>' +
+          '<div><h3 class="name">' + esc(p.name) + '</h3>' +
+          '<p class="meta">' + esc(meta) + '</p>' +
+          '<p class="desc">' + esc(p.tagline) + '</p>' +
+          '<div class="links">' + links + '</div></div></li>';
+      }
+
+      fetch('/data/projects.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (d) {
+          var html = (d.regions || []).map(function (r) {
+            var items = d.projects.filter(function (p) { return p.region === r.id; });
+            if (!items.length) return '';
+            return '<section style="--zone:' + esc(r.color) + '"><h2>' + esc(r.title) + ' <small>' + items.length + '</small></h2>' +
+              '<ul class="list">' + items.map(card).join('') + '</ul></section>';
+          }).join('');
+          document.getElementById('list').innerHTML = html;
+
+          var games = d.projects.filter(function (p) { return p.region === 'games'; }).map(function (p) { return p.name; });
+          if (games.length) {
+            var names = games.length > 1 ? games.slice(0, -1).join(', ') + ' and ' + games[games.length - 1] : games[0];
+            document.getElementById('legal').textContent = names + (games.length > 1 ? ' are' : ' is a') + ' non-commercial fan project' + (games.length > 1 ? 's' : '') + ', not affiliated with or endorsed by Ankama. Dofus and Dofus Retro are trademarks of Ankama.';
+          }
+        })
+        .catch(function () {
+          document.getElementById('list').innerHTML = '<p class="msg">Could not load the list. Everything is on <a href="https://github.com/BigFatDeuce">github.com/BigFatDeuce</a>.</p>';
+        });
+    })();
+  </script>
+</body>
+</html>
