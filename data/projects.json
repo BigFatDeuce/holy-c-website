@@ -52,9 +52,9 @@
       "shots": ["assets/projects/chud-music-android/shot.webp", "assets/projects/chud-music-android/shot2.webp"],
       "portrait": true,
       "links": {},
-      "version": "0.3.2",
+      "version": "0.3.3",
       "prerelease": false,
-      "released": "2026-11-16"
+      "released": "2026-11-18"
     },
     {
       "id": "chud-iptv",
@@ -181,9 +181,9 @@
       "logoWide": true,
       "shots": ["assets/projects/retro-chess/shot.webp"],
       "links": { "play": "https://retro-chess.holy-c.men/" },
-      "version": "0.3.1",
+      "version": "0.4.0",
       "prerelease": false,
-      "released": "2026-11-17"
+      "released": "2026-11-18"
     }
   ]
 }
