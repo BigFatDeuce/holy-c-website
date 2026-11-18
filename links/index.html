@@ -48,10 +48,9 @@
 
     .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
     .item { display: grid; grid-template-columns: 128px 1fr; gap: 18px; padding: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
-    .logo { width: 76px; height: 76px; border-radius: 14px; background: rgba(255, 255, 255, 0.04); display: grid; place-items: center; overflow: hidden; }
-    .logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+    .logo { position: relative; width: 76px; height: 76px; border-radius: 14px; background: rgba(255, 255, 255, 0.04); overflow: hidden; }
+    .logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6px; }
     .logo.wide { width: 128px; }
-    .logo.wide img { padding: 4px; }
     .name { font: 700 22px/1.15 var(--display); margin: 2px 0 4px; }
     .meta { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
     .desc { color: var(--ink-dim); margin: 0 0 14px; }
