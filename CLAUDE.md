@@ -4,7 +4,7 @@ Static showcase for holy-c.men, deployed by Cloudflare Pages (project `holy-c-we
 of github.com/BigFatDeuce/holy-c-website. No build step.
 
 - All content lives in `data/projects.json`; README.md documents every field and the workflows.
-- Updating versions: `node tools/sync-releases.mjs`, then commit and push. A GitHub Action does this every hour
+- Updating versions: `node tools/sync-releases.mjs`, then commit and push. A GitHub Action does this every 15 minutes (GitHub often delays or skips scheduled runs)
   and pushes as github-actions[bot], so always `git pull` before working. It also keeps an issue
   "New public repos not on the site" open while a public repo is missing: check it with `gh issue list`.
 - Adding a project: `node tools/new-project.mjs Owner/Repo --region <zone>`, rewrite the texts from the repo README,

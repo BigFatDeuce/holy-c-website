@@ -1,11 +1,11 @@
-# Every hour: pull the latest release of each project into data/projects.json and push it,
+# Every 15 minutes: pull the latest release of each project into data/projects.json and push it,
 # which makes Cloudflare Pages redeploy the site. Also flags new public repos that are not on the site yet
 # in a single GitHub issue, since adding a project needs hand-written texts and images.
 name: Sync releases
 
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 
 permissions:
