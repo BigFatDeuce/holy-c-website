@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Chud Converter"><title>Chud Converter</title><circle cx="128" cy="128" r="127" fill="#011128"/>
+<circle cx="128" cy="128" r="116" fill="none" stroke="#f9c83a" stroke-width="9"/>
+<path fill="#123f7d" stroke="#011128" stroke-width="7" stroke-linejoin="round" d="M50 52H112L136 76V146H50Z"/>
+<path fill="#2c639f" stroke="#011128" stroke-width="5" stroke-linejoin="round" d="M112 52V76H136Z"/>
+<rect x="64" y="64" width="36" height="8" rx="4" fill="#2c639f"/>
+<rect x="64" y="84" width="56" height="8" rx="4" fill="#2c639f"/>
+<rect x="64" y="104" width="56" height="8" rx="4" fill="#2c639f"/>
+<rect x="64" y="124" width="30" height="8" rx="4" fill="#2c639f"/>
+<path fill="none" stroke="#011128" stroke-width="20" stroke-linecap="round" d="M148 64Q190 64 194 86"/>
+<path fill="none" stroke="#f9c83a" stroke-width="10" stroke-linecap="round" d="M148 64Q190 64 194 86"/>
+<path fill="#f9c83a" stroke="#011128" stroke-width="6" stroke-linejoin="round" d="M178 84H210L194 106Z"/>
+<path fill="none" stroke="#011128" stroke-width="20" stroke-linecap="round" d="M90 200Q60 200 60 174"/>
+<path fill="none" stroke="#f9c83a" stroke-width="10" stroke-linecap="round" d="M90 200Q60 200 60 174"/>
+<path fill="#f9c83a" stroke="#011128" stroke-width="6" stroke-linejoin="round" d="M44 176H76L60 154Z"/>
+<path fill="#f9c83a" stroke="#011128" stroke-width="7" stroke-linejoin="round" d="M100 108H174L202 136V212H100Z"/>
+<path fill="#d9a02c" stroke="#011128" stroke-width="5" stroke-linejoin="round" d="M174 108V136H202Z"/>
+<path fill="#011128" d="M112 134L146 141V147L112 140ZM190 134L156 141V147L190 140Z"/>
+<rect x="111" y="146" width="34" height="21" rx="3" fill="#ffffff" stroke="#011128" stroke-width="5"/>
+<rect x="157" y="146" width="34" height="21" rx="3" fill="#ffffff" stroke="#011128" stroke-width="5"/>
+<path stroke="#011128" stroke-width="5" d="M145 153H157"/>
+<circle cx="128" cy="157.5" r="4.6" fill="#011128"/><circle cx="174" cy="157.5" r="4.6" fill="#011128"/>
+<path fill="none" stroke="#011128" stroke-width="6" stroke-linecap="round" d="M139 192Q151 183 163 192"/></svg>

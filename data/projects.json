@@ -1,6 +1,10 @@
 {
   "site": {
-    "about": "{software} applications for Windows, Linux and Android, and {games} fan games set in the world of Dofus Retro. Every one of them is free, works without an account, sends no telemetry, and is published on GitHub with its releases."
+    "about": "{software} applications for Windows, Linux and Android, and {games} fan games: Dofus Retro classics reimagined and a Paper Mario Tetris. Every one of them is free, works without an account, sends no telemetry, and is published on GitHub with its releases.",
+    "legal": [
+      "Retro Defenders, Retro Survivors and Retro Chess are non-commercial fan projects, not affiliated with or endorsed by Ankama. Dofus and Dofus Retro are trademarks of Ankama.",
+      "Paper Tetris is a non-commercial fan project, not affiliated with or endorsed by Nintendo or The Tetris Company. Paper Mario is a trademark of Nintendo; Tetris is a trademark of The Tetris Company."
+    ]
   },
   "regions": [
     {
@@ -129,6 +133,24 @@
       "released": "2026-11-15"
     },
     {
+      "id": "chud-converter",
+      "name": "Chud Converter",
+      "region": "software",
+      "repo": "BigFatDeuce/chud-converter",
+      "tagline": "The universal file converter that tells you what will be lost.",
+      "description": "It detects what your files really are, picks the conversion path that loses the least, lists beforehand everything that will go away, then reads the result back to verify it. Video, audio, images, documents, e-books, archives, PDF and OCR, all on your machine. Your originals are never touched.",
+      "platforms": ["Windows", "Linux"],
+      "stack": "Rust, Tauri 2, Svelte",
+      "license": "GPL-3.0",
+      "facts": ["195 formats", "Fidelity report first", "Every result verified", "App & command line"],
+      "logo": "assets/projects/chud-converter/logo.svg",
+      "shots": ["assets/projects/chud-converter/shot.webp"],
+      "links": {},
+      "version": "0.1.2",
+      "prerelease": false,
+      "released": "2026-11-18"
+    },
+    {
       "id": "retro-defenders",
       "name": "Retro Defenders",
       "region": "games",
@@ -182,6 +204,25 @@
       "shots": ["assets/projects/retro-chess/shot.webp"],
       "links": { "play": "https://retro-chess.holy-c.men/" },
       "version": "0.5.1",
+      "prerelease": false,
+      "released": "2026-11-19"
+    },
+    {
+      "id": "paper-tetris",
+      "name": "Paper Tetris",
+      "region": "games",
+      "repo": "BigFatDeuce/paper-tetris",
+      "tagline": "Classic Tetris, folded into a Paper Mario 64 storybook.",
+      "description": "Strict modern Tetris with SRS rotation, hold, T-Spins and five modes, played on nine Paper Mario battle stages rebuilt in 3D. A troupe of Shy Guys dances when you score a Tetris and panics when the stack gets high, Bowser watches you in his castle, and the original soundtrack plays throughout. Play in your browser or download it.",
+      "platforms": ["Browser", "Windows", "Linux", "macOS", "Android"],
+      "stack": "Godot 4",
+      "license": "Free",
+      "facts": ["5 modes", "9 Paper Mario stages", "Keyboard, gamepad, touch", "English & French"],
+      "logo": "assets/projects/paper-tetris/logo.webp",
+      "logoWide": true,
+      "shots": ["assets/projects/paper-tetris/shot.webp"],
+      "links": { "play": "https://paper-tetris.holy-c.men/" },
+      "version": "1.1.1",
       "prerelease": false,
       "released": "2026-11-19"
     }

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Just the links — Holy-C</title>
-  <meta name="description" content="Every Holy-C project on one plain page: free apps and Dofus Retro fan games, with download, play and GitHub links.">
+  <meta name="description" content="Every Holy-C project on one plain page: free apps and fan games, with download, play and GitHub links.">
   <meta name="theme-color" content="#10131d">
   <meta property="og:title" content="Just the links — Holy-C">
   <meta property="og:description" content="Every Holy-C project on one plain page, with download, play and GitHub links.">
@@ -148,11 +148,7 @@
           }).join('');
           document.getElementById('list').innerHTML = html;
 
-          var games = d.projects.filter(function (p) { return p.region === 'games'; }).map(function (p) { return p.name; });
-          if (games.length) {
-            var names = games.length > 1 ? games.slice(0, -1).join(', ') + ' and ' + games[games.length - 1] : games[0];
-            document.getElementById('legal').textContent = names + (games.length > 1 ? ' are' : ' is a') + ' non-commercial fan project' + (games.length > 1 ? 's' : '') + ', not affiliated with or endorsed by Ankama. Dofus and Dofus Retro are trademarks of Ankama.';
-          }
+          document.getElementById('legal').textContent = ((d.site && d.site.legal) || []).join(' ');
         })
         .catch(function () {
           document.getElementById('list').innerHTML = '<p class="msg">Could not load the list. Everything is on <a href="https://github.com/BigFatDeuce">github.com/BigFatDeuce</a>.</p>';

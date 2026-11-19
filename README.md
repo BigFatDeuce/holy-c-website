@@ -16,12 +16,22 @@ node tools/sync-releases.mjs
 It reads the newest GitHub release of each project's `repo` and updates `version`, `prerelease`
 and `released`. Add `--dry-run` to only see what would change. Then commit and push.
 
-This also runs by itself every 15 minutes (GitHub may delay or skip scheduled runs) (`.github/workflows/sync-releases.yml`): new versions are committed
-and pushed automatically, and public repos missing from the site are listed in an open issue
-("New public repos not on the site"). Run it on demand from the Actions tab, or with
-`gh workflow run sync-releases.yml`.
+This also runs by itself every 15 minutes (`.github/workflows/sync-releases.yml`; GitHub may delay
+or skip scheduled runs): new versions are committed and pushed automatically. Run it on demand from
+the Actions tab, or with `gh workflow run sync-releases.yml`.
 
-## Add a project
+## New projects are added automatically
+
+The same Action runs `tools/auto-add.mjs`: every public repo of the owner that is not on the site yet
+and has at least one published release is added by itself. It guesses the zone (game or software),
+the name, tagline and description from the README, the platforms from the release files, the play link
+from the repo's homepage, and takes the logo and first screenshot referenced by the README.
+Those entries get `"auto": true` and are listed in the issue "New public repos not on the site",
+together with public repos that have no release yet. Review them (texts, `facts`, images), then remove
+`"auto": true`; the issue closes by itself once nothing is left. Repos listed in `IGNORE_REPOS` in the
+workflow are never added. Try it locally with `node tools/auto-add.mjs --dry-run`.
+
+## Add a project by hand
 
 1. Create the entry, pre-filled from GitHub:
 
@@ -69,9 +79,14 @@ automatically between consecutive zones. Zones without projects are hidden.
 | `links` | no | `play`, `website`, `discord`, or `download` / `github` to override the defaults (`false` hides them) |
 | `nudge` | no | `{ "x": 0, "y": 0 }` to move a marker by hand if two names collide |
 | `version`, `prerelease`, `released` | no | Filled by `tools/sync-releases.mjs` |
+| `auto` | no | `true` on entries added by `tools/auto-add.mjs` that still need a review; not shown anywhere |
 
 `site.about` is the first paragraph of the About page; `{software}` and `{games}` (any zone id)
 are replaced by the number of projects in that zone, written in words.
+
+`site.legal` is a list of notices shown at the bottom of the About page and of the links page,
+one per franchise of fan games (who owns the trademarks, and that the games are not affiliated with them).
+Update it whenever a fan game from a new franchise is added.
 
 ## Caching
 

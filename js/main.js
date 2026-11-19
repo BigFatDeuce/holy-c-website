@@ -621,6 +621,7 @@
     M.regions.forEach((r) => { counts[r.id] = r.items.length; });
     const about = ((data.site && data.site.about) || '').replace(/\{(\w+)\}/g, (_, k) => word(counts[k] || 0));
     $('#aboutIntro').textContent = cap(about);
+    $('#aboutLegal').textContent = ((data.site && data.site.legal) || []).join(' ');
 
     const stacks = new Set(), licences = new Set();
     M.projects.forEach((p) => {

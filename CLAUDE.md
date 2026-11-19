@@ -5,9 +5,12 @@ of github.com/BigFatDeuce/holy-c-website. No build step.
 
 - All content lives in `data/projects.json`; README.md documents every field and the workflows.
 - Updating versions: `node tools/sync-releases.mjs`, then commit and push. A GitHub Action does this every 15 minutes (GitHub often delays or skips scheduled runs)
-  and pushes as github-actions[bot], so always `git pull` before working. It also keeps an issue
-  "New public repos not on the site" open while a public repo is missing: check it with `gh issue list`.
-- Adding a project: `node tools/new-project.mjs Owner/Repo --region <zone>`, rewrite the texts from the repo README,
+  and pushes as github-actions[bot], so always `git pull` before working.
+- New public repos with a release are added by the same Action (`tools/auto-add.mjs`) with `"auto": true`.
+  At the start of a session, run `gh issue list`: the issue "New public repos not on the site" lists those
+  entries to polish (English texts, `facts`, images, `logoWide`, nudge) and repos without a release.
+  After polishing, remove `"auto": true`. For a fan game from a new franchise, add a notice to `site.legal`.
+- Adding a project by hand: `node tools/new-project.mjs Owner/Repo --region <zone>`, rewrite the texts from the repo README,
   download logo + screenshots from the repo into `assets/projects/<id>/`, run `python -I tools/optimize_images.py assets/projects/<id>`.
 - Check locally with the `site` preview (`.claude/launch.json`, port 8765) on desktop 1440x900 and mobile before pushing.
 - Site texts are in English. Display font Bricolage Grotesque at 84% width (font-stretch on html), zone titles Chakra Petch (glitch bursts from glitchLoop in main.js), body text Inter. The intro portrait is assets/intro/portrait.webp, a circle-masked transparent image.

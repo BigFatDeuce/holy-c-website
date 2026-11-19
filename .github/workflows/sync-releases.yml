@@ -1,6 +1,7 @@
-# Every 15 minutes: pull the latest release of each project into data/projects.json and push it,
-# which makes Cloudflare Pages redeploy the site. Also flags new public repos that are not on the site yet
-# in a single GitHub issue, since adding a project needs hand-written texts and images.
+# Every 15 minutes (when GitHub actually starts the schedule): add new public repos that have a release,
+# pull the latest release of each project into data/projects.json, and push, which makes Cloudflare Pages
+# redeploy the site. Projects added automatically carry "auto": true and are listed in a GitHub issue
+# so their texts and images can be reviewed by hand.
 name: Sync releases
 
 on:
@@ -19,12 +20,12 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       OWNER: BigFatDeuce
-      # Public repos that are deliberately not shown on the site.
+      # Public repos that are deliberately not shown on the site (comma or space separated).
       IGNORE_REPOS: holy-c-website
     steps:
       - uses: actions/checkout@v4
@@ -33,34 +34,53 @@ jobs:
         with:
           node-version: 22
 
+      - name: Add new projects
+        run: |
+          python3 -m pip install --quiet --disable-pip-version-check Pillow
+          node tools/auto-add.mjs
+
       - name: Update versions
         run: node tools/sync-releases.mjs
 
       - name: Commit and push
         run: |
-          if git diff --quiet data/projects.json; then
-            echo "No new releases."
+          git add -A data/projects.json assets/projects
+          if git diff --cached --quiet; then
+            echo "Nothing new."
             exit 0
           fi
-          changed=$(git diff -U0 data/projects.json | grep -c '^+ *"version"' || true)
+          new=$(git diff --cached -U0 data/projects.json | grep -c '^+ *"auto": true' || true)
+          changed=$(git diff --cached -U0 data/projects.json | grep -c '^+ *"version"' || true)
+          if [ "$new" -gt 0 ]; then msg="Add $new new project(s), update versions"; else msg="Update versions ($changed project(s))"; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898231+github-actions[bot]@users.noreply.github.com"
-          git add data/projects.json
-          git commit -m "Update versions ($changed project(s))"
+          git commit -m "$msg"
           git push
 
-      - name: Flag public repos missing from the site
+      - name: Keep the review issue up to date
         run: |
+          auto=$(node -e "const d=require('./data/projects.json');console.log(d.projects.filter(p=>p.auto).map(p=>p.id+' '+p.repo).join('\n'))")
           listed=$(node -e "const d=require('./data/projects.json');console.log(d.projects.map(p=>(p.repo||'').split('/')[1]).filter(Boolean).join('\n'))")
           missing=$(gh repo list "$OWNER" --visibility public --source --limit 200 --json name --jq '.[].name' \
-            | grep -vxF -f <(printf '%s\n' $listed $(echo "$IGNORE_REPOS" | tr ',' ' ')) || true)
+            | grep -vixF -f <(printf '%s\n' $listed $(echo "$IGNORE_REPOS" | tr ',' ' ')) || true)
           title="New public repos not on the site"
           issue=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')
-          if [ -z "$missing" ]; then
-            [ -n "$issue" ] && gh issue close "$issue" --comment "All public repos are on the site now."
+          if [ -z "$auto" ] && [ -z "$missing" ]; then
+            [ -n "$issue" ] && gh issue close "$issue" --comment "Every public repo is on the site and reviewed."
             exit 0
           fi
-          body=$(printf 'These public repos are not in `data/projects.json` yet:\n\n'; for r in $missing; do printf -- '- [ ] https://github.com/%s/%s\n' "$OWNER" "$r"; done; printf '\nAdd them with `node tools/new-project.mjs %s/<repo> --region <zone>`, or list them in `IGNORE_REPOS` in this workflow.\n' "$OWNER")
+          body=$(
+            if [ -n "$auto" ]; then
+              printf 'Added automatically, to review (texts, facts, images), then remove `"auto": true`:\n\n'
+              printf '%s\n' "$auto" | while read -r id repo; do printf -- '- [ ] `%s` from https://github.com/%s\n' "$id" "$repo"; done
+              printf '\n'
+            fi
+            if [ -n "$missing" ]; then
+              printf 'Not on the site yet (no published release, so not added automatically):\n\n'
+              for r in $missing; do printf -- '- [ ] https://github.com/%s/%s\n' "$OWNER" "$r"; done
+              printf '\nTo hide a repo for good, list it in `IGNORE_REPOS` in this workflow.\n'
+            fi
+          )
           if [ -n "$issue" ]; then
             gh issue edit "$issue" --body "$body"
           else
