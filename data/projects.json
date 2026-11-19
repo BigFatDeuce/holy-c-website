@@ -146,9 +146,9 @@
       "logo": "assets/projects/chud-converter/logo.svg",
       "shots": ["assets/projects/chud-converter/shot.webp"],
       "links": {},
-      "version": "0.1.2",
+      "version": "0.2.0",
       "prerelease": false,
-      "released": "2026-11-18"
+      "released": "2026-11-19"
     },
     {
       "id": "retro-defenders",
@@ -203,7 +203,7 @@
       "logoWide": true,
       "shots": ["assets/projects/retro-chess/shot.webp"],
       "links": { "play": "https://retro-chess.holy-c.men/" },
-      "version": "0.5.1",
+      "version": "0.5.2",
       "prerelease": false,
       "released": "2026-11-19"
     },
