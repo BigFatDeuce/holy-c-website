@@ -100,5 +100,6 @@ Replacing an image under the same name has the same problem: give the new file a
 - `index.html`, `css/style.css` — page and styles (display font: Bricolage Grotesque, narrowed with font-stretch; zone titles: Chakra Petch with a periodic glitch; text: Inter)
 - `js/main.js` — layout, camera, markers, zones, panels
 - `js/world.js` — WebGL background
+- `assets/fonts/` — self-hosted fonts (SIL Open Font License, see `OFL.txt`), so visitors never contact Google
 - `links/index.html` — "Just the links, bro": a plain list of every project, built from the same JSON (self-contained CSS and JS, not cached)
 - `_headers` — Cloudflare Pages cache headers

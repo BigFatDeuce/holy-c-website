@@ -16,3 +16,5 @@ of github.com/BigFatDeuce/holy-c-website. No build step.
 - Site texts are in English. Display font Bricolage Grotesque at 84% width (font-stretch on html), zone titles Chakra Petch (glitch bursts from glitchLoop in main.js), body text Inter. The intro portrait is assets/intro/portrait.webp, a circle-masked transparent image.
 - `links/index.html` (holy-c.men/links/) is a plain list of the projects from the same JSON, with inline CSS/JS; keep link rules in sync with linksOf() in main.js.
 - After editing css/js, bump the `?v=` on their links in index.html: the holy-c.men zone cache otherwise serves stale files.
+- Privacy: no third-party requests from visitors' browsers (fonts are self-hosted in assets/fonts, SIL OFL). Commit with
+  `TZ=UTC git commit ...` so commit dates do not reveal the local time zone (`.claude/settings.local.json` also sets TZ=UTC).
