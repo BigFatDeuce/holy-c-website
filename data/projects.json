@@ -128,9 +128,9 @@
       "logo": "assets/projects/chud-clone/logo.webp",
       "shots": ["assets/projects/chud-clone/shot.webp"],
       "links": {},
-      "version": "0.7.0",
+      "version": "0.8.0",
       "prerelease": false,
-      "released": "2026-11-15"
+      "released": "2026-11-20"
     },
     {
       "id": "chud-converter",
@@ -146,9 +146,9 @@
       "logo": "assets/projects/chud-converter/logo.svg",
       "shots": ["assets/projects/chud-converter/shot.webp"],
       "links": {},
-      "version": "0.2.1",
+      "version": "0.3.0",
       "prerelease": false,
-      "released": "2026-11-19"
+      "released": "2026-11-20"
     },
     {
       "id": "retro-defenders",
