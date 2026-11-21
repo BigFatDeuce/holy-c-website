@@ -128,9 +128,9 @@
       "logo": "assets/projects/chud-clone/logo.webp",
       "shots": ["assets/projects/chud-clone/shot.webp"],
       "links": {},
-      "version": "0.8.0",
+      "version": "0.9.0",
       "prerelease": false,
-      "released": "2026-11-20"
+      "released": "2026-11-21"
     },
     {
       "id": "chud-converter",
@@ -203,9 +203,9 @@
       "logoWide": true,
       "shots": ["assets/projects/retro-chess/shot.webp"],
       "links": { "play": "https://retro-chess.holy-c.men/" },
-      "version": "0.5.2",
+      "version": "0.5.3",
       "prerelease": false,
-      "released": "2026-11-19"
+      "released": "2026-11-21"
     },
     {
       "id": "paper-tetris",
