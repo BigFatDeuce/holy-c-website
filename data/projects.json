@@ -56,9 +56,9 @@
       "shots": ["assets/projects/chud-music-android/shot.webp", "assets/projects/chud-music-android/shot2.webp"],
       "portrait": true,
       "links": {},
-      "version": "0.3.3",
+      "version": "0.4.0",
       "prerelease": false,
-      "released": "2026-11-18"
+      "released": "2026-11-22"
     },
     {
       "id": "chud-iptv",
@@ -163,7 +163,7 @@
       "facts": [],
       "logo": "assets/projects/chud-input-recorder/logo.svg",
       "links": {},
-      "version": "0.1.0",
+      "version": "0.2.0",
       "prerelease": false,
       "released": "2026-11-22",
       "auto": true
