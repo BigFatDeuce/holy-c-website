@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Chud Input"><title>Chud Input</title>
+<!-- touches fléchées -->
+<ellipse cx="128" cy="186" rx="50" ry="6" fill="#011128" opacity="0.25"/>
+<rect x="53" y="198" width="44" height="46" rx="9" fill="#011128"/><rect x="58" y="203" width="34" height="36" rx="6" fill="#2c639f"/><rect x="62" y="205" width="26" height="26" rx="4" fill="#6d8cab"/><path fill="none" stroke="#011128" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M79 211L71 218L79 225"/>
+<rect x="106" y="198" width="44" height="46" rx="9" fill="#011128"/><rect x="111" y="203" width="34" height="36" rx="6" fill="#d9a02c"/><rect x="115" y="205" width="26" height="26" rx="4" fill="#f9c83a"/><path fill="none" stroke="#011128" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M121 214L128 222L135 214"/>
+<rect x="159" y="198" width="44" height="46" rx="9" fill="#011128"/><rect x="164" y="203" width="34" height="36" rx="6" fill="#2c639f"/><rect x="168" y="205" width="26" height="26" rx="4" fill="#6d8cab"/><path fill="none" stroke="#011128" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M177 211L185 218L177 225"/>
+<g transform="translate(18 2) scale(0.86)">
+<!-- fantôme -->
+<path fill="#123f7d" stroke="#011128" stroke-width="8" stroke-linejoin="round" d="M60 196V104Q60 30 128 28Q196 30 196 104V196Q184 182 172 196Q160 210 150 196Q139 182 128 196Q117 210 106 196Q96 182 84 196Q72 210 60 196Z"/>
+<path fill="#e8eef6" d="M70 186V106Q70 42 128 40Q186 42 186 106V186Q178 178 170 188Q160 198 150 188Q139 176 128 188Q117 200 106 188Q96 176 86 188Q78 196 70 186Z"/>
+<path fill="#c3d2e4" d="M150 188Q160 198 170 188Q178 178 186 186V106Q186 70 166 54Q176 80 172 120Q168 168 150 188Z"/>
+<!-- mèche chud -->
+<path fill="#123f7d" stroke="#011128" stroke-width="6" stroke-linejoin="round" d="M96 46Q112 18 150 26Q138 32 136 42Q122 36 96 46Z"/>
+<!-- visage -->
+<path fill="#011128" d="M78 88L122 100L119 110L76 98ZM178 88L134 100L137 110L180 98Z"/>
+<rect x="80" y="106" width="42" height="26" rx="4" fill="#ffffff" stroke="#011128" stroke-width="6"/>
+<rect x="134" y="106" width="42" height="26" rx="4" fill="#ffffff" stroke="#011128" stroke-width="6"/>
+<path fill="none" stroke="#011128" stroke-width="6" d="M122 116H134"/>
+<circle cx="103" cy="119" r="7" fill="#011128"/><circle cx="155" cy="119" r="7" fill="#011128"/>
+<path fill="none" stroke="#011128" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M124 136L121 152Q124 158 132 157"/>
+<path fill="none" stroke="#011128" stroke-width="8" stroke-linecap="round" d="M106 174Q128 160 150 174"/>
+</g>
+<!-- point REC -->
+<circle cx="204" cy="52" r="30" fill="#011128"/>
+<circle cx="204" cy="52" r="24" fill="#f9c83a"/>
+<circle cx="204" cy="52" r="15" fill="#e0342c" stroke="#011128" stroke-width="5"/>
+</svg>

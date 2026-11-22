@@ -151,6 +151,24 @@
       "released": "2026-11-22"
     },
     {
+      "id": "chud-input-recorder",
+      "name": "Chud Input Recorder",
+      "region": "software",
+      "repo": "BigFatDeuce/Chud-Input-Recorder",
+      "tagline": "Record, edit, automate and replay your keyboard, mouse and gamepads.",
+      "description": "Most macro recorders give you a big red button and a list of coordinates. Chud is a full studio around the take:",
+      "platforms": ["Windows"],
+      "stack": "Rust",
+      "license": "MIT",
+      "facts": [],
+      "logo": "assets/projects/chud-input-recorder/logo.svg",
+      "links": {},
+      "version": "0.1.0",
+      "prerelease": false,
+      "released": "2026-11-22",
+      "auto": true
+    },
+    {
       "id": "retro-defenders",
       "name": "Retro Defenders",
       "region": "games",
