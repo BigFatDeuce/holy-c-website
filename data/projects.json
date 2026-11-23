@@ -202,9 +202,9 @@
       "logoWide": true,
       "shots": ["assets/projects/retro-survivors/shot.webp"],
       "links": { "play": "https://retro-survivors.pages.dev", "discord": "https://discord.gg/N8f62M2eaK" },
-      "version": "1.07",
+      "version": "1.08",
       "prerelease": false,
-      "released": "2026-11-21"
+      "released": "2026-11-23"
     },
     {
       "id": "retro-chess",
