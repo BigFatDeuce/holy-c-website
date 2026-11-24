@@ -261,6 +261,25 @@
       "version": "1.1.2",
       "prerelease": false,
       "released": "2026-11-24"
+    },
+    {
+      "id": "a-survivor-to-the-past",
+      "name": "A Survivor to the Past",
+      "region": "games",
+      "repo": "BigFatDeuce/A-Survivor-to-the-Past",
+      "tagline": "A Link to the Past",
+      "description": "A Survivor to the Past is an unofficial fan game made for fun. It mixes the formula of survivors-like games (your weapons attack on their own, the waves never stop, every level offers new powers) with the sprites, music and sounds of The Legend of Zelda: A Link to the Past (SNES, 1991).",
+      "platforms": ["Browser", "Windows"],
+      "stack": "Rust",
+      "license": "GPL-3.0",
+      "facts": [],
+      "logo": "assets/projects/a-survivor-to-the-past/logo.webp",
+      "shots": ["assets/projects/a-survivor-to-the-past/shot.webp"],
+      "links": { "play": "https://a-survivor-to-the-past.holy-c.men/" },
+      "version": "0.2.0",
+      "prerelease": false,
+      "released": "2026-11-24",
+      "auto": true
     }
   ]
 }
