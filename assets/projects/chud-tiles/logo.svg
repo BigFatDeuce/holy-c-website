@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Chud Tiles"><title>Chud Tiles</title>
+<defs>
+<radialGradient id="space" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#5b2a9e"/><stop offset="0.55" stop-color="#22114d"/><stop offset="1" stop-color="#0b0620"/></radialGradient>
+<linearGradient id="ring" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#38d6ff"/><stop offset="0.5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+<linearGradient id="tileC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bff3ff"/><stop offset="1" stop-color="#38d6ff"/></linearGradient>
+<linearGradient id="tileP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9d5ff"/><stop offset="1" stop-color="#a855f7"/></linearGradient>
+<clipPath id="back"><rect x="-150" y="-60" width="300" height="60"/></clipPath>
+<clipPath id="front"><rect x="-150" y="0" width="300" height="60"/></clipPath>
+</defs>
+<!-- fond spatial -->
+<circle cx="128" cy="128" r="112" fill="url(#space)" stroke="#011128" stroke-width="8"/>
+<g fill="#ffffff"><circle cx="64" cy="76" r="2.5"/><circle cx="196" cy="70" r="2"/><circle cx="182" cy="196" r="2.5"/><circle cx="70" cy="190" r="1.8"/><circle cx="104" cy="44" r="1.6"/><circle cx="214" cy="132" r="1.6"/></g>
+<!-- anneau, moitié arrière -->
+<g transform="translate(128 190) rotate(-12)">
+<g clip-path="url(#back)"><ellipse rx="112" ry="30" fill="none" stroke="#011128" stroke-width="20"/><ellipse rx="112" ry="30" fill="none" stroke="url(#ring)" stroke-width="10"/></g>
+</g>
+<!-- tête du chud -->
+<path fill="#123f7d" stroke="#011128" stroke-width="7" stroke-linejoin="round" d="M72 136Q66 52 128 48Q190 52 184 136Q172 92 128 90Q84 92 72 136Z"/>
+<path fill="#c8b59c" stroke="#011128" stroke-width="7" stroke-linejoin="round" d="M78 108Q128 80 178 108L172 168Q160 206 128 210Q96 206 84 168Z"/>
+<path fill="#011128" d="M80 112L122 126V135L80 122ZM176 112L134 126V135L176 122Z"/>
+<rect x="82" y="128" width="40" height="24" rx="4" fill="#ffffff" stroke="#011128" stroke-width="6"/>
+<rect x="134" y="128" width="40" height="24" rx="4" fill="#ffffff" stroke="#011128" stroke-width="6"/>
+<path fill="none" stroke="#011128" stroke-width="6" d="M122 136H134"/>
+<circle cx="103" cy="140" r="6" fill="#011128"/><circle cx="155" cy="140" r="6" fill="#011128"/>
+<path fill="none" stroke="#011128" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M125 156L122 172Q125 178 133 177"/>
+<path fill="none" stroke="#011128" stroke-width="8" stroke-linecap="round" d="M106 194Q128 182 150 194"/>
+<!-- anneau, moitié avant + tuiles -->
+<g transform="translate(128 190) rotate(-12)">
+<g clip-path="url(#front)"><ellipse rx="112" ry="30" fill="none" stroke="#011128" stroke-width="20"/><ellipse rx="112" ry="30" fill="none" stroke="url(#ring)" stroke-width="10"/></g>
+<rect x="-96" y="10" width="34" height="16" rx="5" fill="url(#tileC)" stroke="#011128" stroke-width="5" transform="rotate(14 -79 18)"/>
+<rect x="58" y="12" width="34" height="16" rx="5" fill="url(#tileP)" stroke="#011128" stroke-width="5" transform="rotate(-14 75 20)"/>
+</g>
+</svg>

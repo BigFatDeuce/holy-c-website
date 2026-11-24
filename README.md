@@ -24,8 +24,9 @@ the Actions tab, or with `gh workflow run sync-releases.yml`.
 
 The same Action runs `tools/auto-add.mjs`: every public repo of the owner that is not on the site yet
 and has at least one published release is added by itself. It guesses the zone (game or software),
-the name, tagline and description from the README, the platforms from the release files, the play link
-from the repo's homepage, and takes the logo and first screenshot referenced by the README.
+the name, tagline and description from the README (badge images are ignored), the platforms from the release
+files, the play link from the repo's homepage or a "Play" link at the top of the README, and takes the logo
+and first screenshot referenced by the README (kept as downloaded if the WebP conversion fails).
 Those entries get `"auto": true` and are listed in the issue "New public repos not on the site",
 together with public repos that have no release yet. Review them (texts, `facts`, images), then remove
 `"auto": true`; the issue closes by itself once nothing is left. Repos listed in `IGNORE_REPOS` in the

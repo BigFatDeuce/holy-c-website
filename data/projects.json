@@ -1,6 +1,6 @@
 {
   "site": {
-    "about": "{software} applications for Windows, Linux and Android, and {games} fan games: Dofus Retro classics reimagined and a Paper Mario Tetris. Every one of them is free, works without an account, sends no telemetry, and is published on GitHub with its releases.",
+    "about": "{software} applications for Windows, Linux and Android, and {games} games: Dofus Retro classics reimagined, a Paper Mario Tetris and a rhythm game that charts your own music. Every one of them is free, works without an account, sends no telemetry, and is published on GitHub with its releases.",
     "legal": [
       "Retro Defenders, Retro Survivors and Retro Chess are non-commercial fan projects, not affiliated with or endorsed by Ankama. Dofus and Dofus Retro are trademarks of Ankama.",
       "Paper Tetris is a non-commercial fan project, not affiliated with or endorsed by Nintendo or The Tetris Company. Paper Mario is a trademark of Nintendo; Tetris is a trademark of The Tetris Company."
@@ -156,17 +156,17 @@
       "region": "software",
       "repo": "BigFatDeuce/Chud-Input-Recorder",
       "tagline": "Record, edit, automate and replay your keyboard, mouse and gamepads.",
-      "description": "Most macro recorders give you a big red button and a list of coordinates. Chud is a full studio around the take:",
-      "platforms": ["Windows"],
-      "stack": "Rust",
+      "description": "A macro studio rather than a big red button. Every take lands on a real timeline, one lane per key and button, that you can zoom, drag and trim without ever losing the original. Stack visual blocks to repeat, branch and wait for an image, a colour or a piece of text on screen. It shows when it is recording, has an emergency stop that always works, and nothing ever leaves your computer.",
+      "platforms": ["Windows", "Linux"],
+      "stack": "Rust, Tauri 2",
       "license": "MIT",
-      "facts": [],
+      "facts": ["Non-destructive timeline", "Automation without scripts", "Sees the screen", "Gamepads included"],
       "logo": "assets/projects/chud-input-recorder/logo.svg",
+      "shots": ["assets/projects/chud-input-recorder/shot.webp"],
       "links": {},
       "version": "0.2.0",
       "prerelease": false,
-      "released": "2026-11-22",
-      "auto": true
+      "released": "2026-11-22"
     },
     {
       "id": "retro-defenders",
@@ -219,7 +219,7 @@
       "facts": ["10 champions, 450–1900 Elo", "10 illustrated boards", "Two players, one screen", "English & French"],
       "logo": "assets/projects/retro-chess/logo.webp",
       "logoWide": true,
-      "shots": ["assets/projects/retro-chess/shot.webp"],
+      "shots": ["assets/projects/retro-chess/shot-2.webp"],
       "links": { "play": "https://retro-chess.holy-c.men/" },
       "version": "0.6.0",
       "prerelease": false,
@@ -246,20 +246,21 @@
     },
     {
       "id": "chud-tiles",
-      "name": "CI",
+      "name": "Chud Tiles",
       "region": "games",
       "repo": "BigFatDeuce/Chud-Tiles",
       "tagline": "A rhythm game that writes its charts from your music.",
-      "description": "Notes slide down glowing lanes toward a hit line: press the lane when they touch it. Nobody charts the songs by hand. Chud Tiles listens to each song (tempo, beats, kick, snare, cymbals, sustained sounds, choruses) and builds a playable chart for every difficulty.",
-      "platforms": ["Windows", "Linux"],
-      "stack": "TypeScript",
+      "description": "Notes slide down glowing lanes toward a hit line: press the lane when they touch it. Nobody charts the songs by hand: Chud Tiles listens to each track, local files or YouTube Music, and builds a playable chart for every difficulty, from Easy to Expert on 3 to 7 lanes. Combos set the lanes on fire, scores go to an online leaderboard, all under procedural space scenes.",
+      "platforms": ["Browser", "Windows", "Linux"],
+      "stack": "Electron, React, TypeScript, Three.js",
       "license": "Free",
-      "facts": [],
-      "links": {},
-      "version": "1.1.0",
+      "facts": ["Charts from any song", "Local files or YouTube Music", "Easy to Expert, 3 to 7 lanes", "Online leaderboard"],
+      "logo": "assets/projects/chud-tiles/logo.svg",
+      "shots": ["assets/projects/chud-tiles/shot.webp"],
+      "links": { "play": "https://chud-tiles.holy-c.men" },
+      "version": "1.1.2",
       "prerelease": false,
-      "released": "2026-11-24",
-      "auto": true
+      "released": "2026-11-24"
     }
   ]
 }

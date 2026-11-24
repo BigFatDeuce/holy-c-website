@@ -34,6 +34,12 @@ jobs:
         with:
           node-version: 22
 
+      # Pillow must land in this Python's own site-packages: auto-add runs Python with -I, which ignores
+      # the user site where a bare `pip install` puts it on the runner (images were left unconverted).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Add new projects
         run: |
           python3 -m pip install --quiet --disable-pip-version-check Pillow

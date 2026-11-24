@@ -51,8 +51,13 @@ function parseReadme(md) {
   const images = [...md.matchAll(/<img[^>]*\bsrc="([^"]+)"[^>]*>|!\[[^\]]*\]\(([^)\s]+)[^)]*\)/gi)]
     .map((m) => m[1] || m[2])
     .filter((src) => !/^https?:\/\/(img\.shields\.io|github\.com\/[^/]+\/[^/]+\/actions)/i.test(src) && !/badge/i.test(src));
-  const heading = (md.match(/^#\s+(.+)$/m) || [])[1];
-  const altName = ((md.match(/<img[^>]*\balt="([^"]+)"/i) || [])[1] || '').replace(/\s+(logo|icon|banner)$/i, '') || undefined;
+  // Name: a Markdown or HTML level-1 heading, else the alt text of the logo image (never a badge's alt, e.g. "CI").
+  const heading = (md.match(/^#[ \t]+(\S.*)$/m) || md.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1];
+  const logoAlt = [...md.matchAll(/<img[^>]*>|!\[[^\]]*\]\([^)]*\)/gi)].map((m) => m[0])
+    .filter((tag) => !/shields\.io|badge|\/actions\//i.test(tag))
+    .map((tag) => (tag.match(/\balt="([^"]+)"/i) || tag.match(/^!\[([^\]]+)\]/) || [])[1] || '')
+    .find((alt) => /\s(logo|icon|banner)$/i.test(alt));
+  const altName = logoAlt ? logoAlt.replace(/\s+(logo|icon|banner)$/i, '') : undefined;
   // Tagline: the first bold line near the top (centered intro blocks), else the first sentence of prose.
   const top = md.slice(0, 2500);
   const bold = (top.match(/<b>([^<]{12,160})<\/b>/i) || top.match(/^\s*\*\*([^*\n]{12,160})\*\*\s*$/m) || [])[1];
@@ -61,10 +66,12 @@ function parseReadme(md) {
   const cut = md.search(/^##+\s.*\b(install|download|update|build|usage|play|licen[cs]e|credit|contribut|develop|controls|roadmap|faq)/im);
   const intro = cut > 0 ? md.slice(0, cut) : md;
   const paras = intro.split(/\n\s*\n/).map((p) => p.trim()).filter((p) =>
-    p && !/^(#|\||[-*+] |\d+\. |>|<|```|\[!\[|!\[|---)/.test(p) && stripTags(p).length > 80);
+    p && !/^(#|\||[-*+] |\d+\. |>|<|```|\[!\[|!\[|---)/.test(p) && stripTags(p).length > 80 && !/:$/.test(stripTags(p)));
   return {
     images,
-    name: heading && !/[<>]/.test(heading) ? stripTags(heading) : altName,
+    name: heading && stripTags(heading) ? stripTags(heading) : altName,
+    // A play-in-browser link near the top (when the repo homepage is not set).
+    play: (top.match(/href="(https:\/\/[^"]+)"[^>]*>(?:<[^>]+>)*[^<]*\bplay\b/i) || top.match(/\[[^\]]*\bplay\b[^\]]*\]\((https:\/\/[^)\s]+)\)/i) || [])[1] || null,
     tagline: bold ? stripTags(bold) : null,
     description: paras.length ? stripTags(paras[0]) : null,
   };
@@ -112,7 +119,7 @@ for (const info of repos) {
   const region = isGame(info, md) && data.regions.some((r) => r.id === 'games') ? 'games' : data.regions[0].id;
   let id = slug(info.name);
   while (data.projects.some((p) => p.id === id)) id += '-2';
-  const homepage = info.homepage && !/github\.com/i.test(info.homepage) ? info.homepage : null;
+  const homepage = [info.homepage, rd.play].find((u) => u && !/github\.com/i.test(u)) || null;
   const name = rd.name && rd.name.length <= 40 ? rd.name : titleCase(info.name);
   const tagline = sentence(rd.tagline || info.description || name, 110);
   const description = sentence(rd.description || info.description || tagline, 520);
@@ -154,8 +161,10 @@ for (const info of repos) {
       execFileSync(process.platform === 'win32' ? 'python' : 'python3', ['-I', 'tools/optimize_images.py', `assets/projects/${id}`], { cwd: ROOT, stdio: 'inherit' });
     } catch (e) { console.error(`! ${id}: image optimisation failed (${e.message})`); }
     const files = await readdir(dir).catch(() => []);
-    const logo = files.find((f) => /^logo\.(webp|svg)$/.test(f));
-    const shot = files.find((f) => /^shot\.webp$/.test(f));
+    // Prefer the optimised WebP; keep the original file if the optimisation could not run.
+    const pick = (kind) => ['webp', 'svg', 'png', 'jpg', 'gif'].map((e) => `${kind}.${e}`).find((f) => files.includes(f));
+    const logo = pick('logo');
+    const shot = pick('shot');
     if (logo) p.logo = `assets/projects/${id}/${logo}`;
     if (shot) p.shots = [`assets/projects/${id}/${shot}`];
     if (!files.length) await rm(dir, { recursive: true, force: true });
