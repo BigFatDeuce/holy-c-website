@@ -177,7 +177,7 @@
       "description": "The twelve classes are your towers, the monsters come from their real regions, and every upgrade changes your character's outfit. An 18-map campaign across Amakna, Astrub, Sidimote and Pandala, map interactions, a bestiary, an Ultimate Mode, and full gamepad and touch support. Play in your browser or download it.",
       "platforms": ["Browser", "Windows", "Android"],
       "stack": "Godot 4",
-      "license": "MIT",
+      "license": "GPL-3.0",
       "facts": ["12 classes, 12 towers", "18 maps", "147 monsters", "5 languages"],
       "logo": "assets/projects/retro-defenders/logo.webp",
       "logoWide": true,
