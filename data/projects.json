@@ -183,9 +183,9 @@
       "logoWide": true,
       "shots": ["assets/projects/retro-defenders/shot.webp"],
       "links": { "play": "https://retro-defenders.holy-c.men/" },
-      "version": "0.50.0",
+      "version": "0.51.0",
       "prerelease": false,
-      "released": "2026-11-21"
+      "released": "2026-11-24"
     },
     {
       "id": "retro-survivors",
@@ -243,6 +243,23 @@
       "version": "1.1.3",
       "prerelease": false,
       "released": "2026-11-20"
+    },
+    {
+      "id": "chud-tiles",
+      "name": "CI",
+      "region": "games",
+      "repo": "BigFatDeuce/Chud-Tiles",
+      "tagline": "A rhythm game that writes its charts from your music.",
+      "description": "Notes slide down glowing lanes toward a hit line: press the lane when they touch it. Nobody charts the songs by hand. Chud Tiles listens to each song (tempo, beats, kick, snare, cymbals, sustained sounds, choruses) and builds a playable chart for every difficulty.",
+      "platforms": ["Windows", "Linux"],
+      "stack": "TypeScript",
+      "license": "Free",
+      "facts": [],
+      "links": {},
+      "version": "1.1.0",
+      "prerelease": false,
+      "released": "2026-11-24",
+      "auto": true
     }
   ]
 }
