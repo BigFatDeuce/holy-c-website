@@ -128,9 +128,9 @@
       "logo": "assets/projects/chud-clone/logo.webp",
       "shots": ["assets/projects/chud-clone/shot.webp"],
       "links": {},
-      "version": "0.9.0",
+      "version": "0.9.1",
       "prerelease": false,
-      "released": "2026-11-21"
+      "released": "2026-11-24"
     },
     {
       "id": "chud-converter",
@@ -276,7 +276,7 @@
       "logo": "assets/projects/a-survivor-to-the-past/logo.webp",
       "shots": ["assets/projects/a-survivor-to-the-past/shot.webp"],
       "links": { "play": "https://a-survivor-to-the-past.holy-c.men/" },
-      "version": "0.2.0",
+      "version": "0.3.0",
       "prerelease": false,
       "released": "2026-11-24",
       "auto": true
