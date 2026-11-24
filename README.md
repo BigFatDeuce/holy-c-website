@@ -14,7 +14,8 @@ node tools/sync-releases.mjs
 ```
 
 It reads the newest GitHub release of each project's `repo` and updates `version`, `prerelease`
-and `released`. Add `--dry-run` to only see what would change. Then commit and push.
+and `released`, and sets `license` to the licence GitHub detects in the repo (e.g. `GPL-3.0`; left as is
+when GitHub detects none). Add `--dry-run` to only see what would change. Then commit and push.
 
 This also runs by itself every 15 minutes (`.github/workflows/sync-releases.yml`; GitHub may delay
 or skip scheduled runs): new versions are committed and pushed automatically. Run it on demand from
@@ -73,7 +74,7 @@ automatically between consecutive zones. Zones without projects are hidden.
 | `repo` | no | `Owner/Repo`; gives the GitHub and Download buttons and feeds the version sync |
 | `tagline`, `description` | yes | Short line and paragraph in the project panel |
 | `platforms` | yes | List shown under the name |
-| `stack`, `license` | no | Shown in the facts grid and the About page |
+| `stack`, `license` | no | Shown in the facts grid and the About page; `license` follows the repo's licence (version sync) |
 | `facts` | no | Up to four short highlights |
 | `logo`, `logoWide` | no | `logoWide: true` for a horizontal logo |
 | `shots`, `portrait` | no | Screenshots; `portrait: true` shows the first two side by side (phone apps) |

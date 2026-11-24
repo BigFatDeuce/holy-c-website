@@ -56,8 +56,8 @@ jobs:
             exit 0
           fi
           new=$(git diff --cached -U0 data/projects.json | grep -c '^+ *"auto": true' || true)
-          changed=$(git diff --cached -U0 data/projects.json | grep -c '^+ *"version"' || true)
-          if [ "$new" -gt 0 ]; then msg="Add $new new project(s), update versions"; else msg="Update versions ($changed project(s))"; fi
+          changed=$(git diff --cached -U0 data/projects.json | grep -cE '^\+ *"(version|license)"' || true)
+          if [ "$new" -gt 0 ]; then msg="Add $new new project(s), update versions"; else msg="Update versions and licences ($changed change(s))"; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898231+github-actions[bot]@users.noreply.github.com"
           git commit -m "$msg"
