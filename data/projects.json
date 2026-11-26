@@ -92,9 +92,9 @@
       "logo": "assets/projects/chud-image/logo.webp",
       "shots": ["assets/projects/chud-image/shot.webp"],
       "links": {},
-      "version": "1.3.0",
+      "version": "1.3.1",
       "prerelease": false,
-      "released": "2026-11-24"
+      "released": "2026-11-26"
     },
     {
       "id": "chud-copy",
@@ -128,9 +128,9 @@
       "logo": "assets/projects/chud-clone/logo.webp",
       "shots": ["assets/projects/chud-clone/shot.webp"],
       "links": {},
-      "version": "0.9.1",
+      "version": "0.9.3",
       "prerelease": false,
-      "released": "2026-11-24"
+      "released": "2026-11-26"
     },
     {
       "id": "chud-converter",
