@@ -146,9 +146,9 @@
       "logo": "assets/projects/chud-converter/logo.svg",
       "shots": ["assets/projects/chud-converter/shot.webp"],
       "links": {},
-      "version": "0.5.1",
+      "version": "0.5.2",
       "prerelease": false,
-      "released": "2026-11-24"
+      "released": "2026-11-26"
     },
     {
       "id": "chud-input-recorder",
