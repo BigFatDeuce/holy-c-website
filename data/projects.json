@@ -56,9 +56,9 @@
       "shots": ["assets/projects/chud-music-android/shot.webp", "assets/projects/chud-music-android/shot2.webp"],
       "portrait": true,
       "links": {},
-      "version": "0.4.1",
+      "version": "0.4.2",
       "prerelease": false,
-      "released": "2026-11-24"
+      "released": "2026-11-27"
     },
     {
       "id": "chud-iptv",
@@ -92,9 +92,9 @@
       "logo": "assets/projects/chud-image/logo.webp",
       "shots": ["assets/projects/chud-image/shot.webp"],
       "links": {},
-      "version": "1.3.1",
+      "version": "1.3.2",
       "prerelease": false,
-      "released": "2026-11-26"
+      "released": "2026-11-27"
     },
     {
       "id": "chud-copy",
@@ -276,9 +276,9 @@
       "logo": "assets/projects/a-survivor-to-the-past/logo.webp",
       "shots": ["assets/projects/a-survivor-to-the-past/shot.webp"],
       "links": { "play": "https://a-survivor-to-the-past.holy-c.men/" },
-      "version": "0.7.0",
+      "version": "0.8.0",
       "prerelease": false,
-      "released": "2026-11-26",
+      "released": "2026-11-27",
       "auto": true
     }
   ]
