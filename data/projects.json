@@ -92,9 +92,9 @@
       "logo": "assets/projects/chud-image/logo.webp",
       "shots": ["assets/projects/chud-image/shot.webp"],
       "links": {},
-      "version": "1.3.2",
+      "version": "1.3.3",
       "prerelease": false,
-      "released": "2026-11-27"
+      "released": "2026-11-28"
     },
     {
       "id": "chud-copy",
@@ -276,9 +276,9 @@
       "logo": "assets/projects/a-survivor-to-the-past/logo.webp",
       "shots": ["assets/projects/a-survivor-to-the-past/shot.webp"],
       "links": { "play": "https://a-survivor-to-the-past.holy-c.men/" },
-      "version": "0.8.0",
+      "version": "0.9.1",
       "prerelease": false,
-      "released": "2026-11-27",
+      "released": "2026-11-28",
       "auto": true
     }
   ]
